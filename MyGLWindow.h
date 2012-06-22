@@ -17,6 +17,8 @@
 #ifndef MYGLWINDOW_H__
 #define MYGLWINDOW_H__
 
+#include <string>
+#include <sys/time.h>
 #include "EGLWindow.h"
 /// @brief this class create our window by inheriting the features of the EGL Window
 class MyGLWindow : public EGLWindow
@@ -24,7 +26,8 @@ class MyGLWindow : public EGLWindow
 	public :
 		/// @brief ctor
 		/// @param[in] _config an optional configuration for the buffers etc
-		MyGLWindow(EGLconfig *_config=0);
+		//MyGLWindow(EGLconfig *_config=0);
+		MyGLWindow(EGLconfig *_config, std::string fragmentShader);
 		/// @brief dtor will close down the vc and re-set EGL
 		~MyGLWindow();
 		/// @brief the is the main drawing function should only be called once initalizeGL has
@@ -34,8 +37,12 @@ class MyGLWindow : public EGLWindow
 		/// @brief one time OpenGL initialisation
 		virtual void initializeGL();
 		int init_resources();
+		float getDeltaTimeS();
 
-		GLuint vbo_triangle;
+                std::string _fragmentShader;
+		timeval startTime;
+
+		GLuint vbo_quad;
 		GLuint program;
 		GLint attribute_coord2d;
 };

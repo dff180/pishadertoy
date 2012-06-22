@@ -15,24 +15,31 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include <iostream>
+#include <string>
 #include "MyGLWindow.h"
 #include "bcm_host.h"
 
 
-int main()
+int main(int argc, char ** argv)
 {
  atexit( bcm_host_deinit);
+
+	// Parse command line
+	std::string fragmentShader;
+	if (argc == 2)
+		fragmentShader = argv[1];
 
 	std::cout<<"starting GL test\n";
 		bcm_host_init();
 	std::cout<<"done bcm init\n";
 	// here I create a config with RGB bit size 5,6,5 and no alpha
 	EGLconfig *config = new EGLconfig();
-	config->setRGBA(5,6,5,0);
+//	config->setRGBA(5,6,5,0);
+	config->setRGBA(8,8,8,8);
 	// set the depth buffer
 	config->setDepth(16);
 	// now create a new window using the default config
-	MyGLWindow win(config);
+	MyGLWindow win(config, fragmentShader);
 
 /*
 	// now set the size of the screen in this case I'm going to do a
@@ -49,7 +56,7 @@ int main()
 	while(1)
 	{
 		win.paintGL();
-		sleep(1);
+		sleep(0.001);
 	}
 }
 
