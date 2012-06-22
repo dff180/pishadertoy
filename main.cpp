@@ -56,7 +56,7 @@ int main(int argc, char ** argv)
 	while(1)
 	{
 		win.paintGL();
-		sleep(0.001);
+		sleep(0.01);
 	}
 }
 
