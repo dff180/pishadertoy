@@ -33,7 +33,11 @@ class MyGLWindow : public EGLWindow
 	protected :
 		/// @brief one time OpenGL initialisation
 		virtual void initializeGL();
+		int init_resources();
 
+		GLuint vbo_triangle;
+		GLuint program;
+		GLint attribute_coord2d;
 };
 
 

@@ -33,6 +33,8 @@ int main()
 	config->setDepth(16);
 	// now create a new window using the default config
 	MyGLWindow win(config);
+
+/*
 	// now set the size of the screen in this case I'm going to do a
 	// rectangle in the middle (if you don't call this you would get a full
 	// screen rect by default)
@@ -42,6 +44,8 @@ int main()
 	win.setUpscale(false);
 	win.setScreen(w/4,h/4,w/2,h/2);
 	int x,y;
+*/
+
 	while(1)
 	{
 		win.paintGL();

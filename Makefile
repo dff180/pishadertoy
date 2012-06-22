@@ -1,9 +1,9 @@
 CC=g++
 CFLAGS=-c -g -Wall -O3  -I/opt/vc/include -I/opt/vc/include/interface/vcos/pthreads 
 LDFLAGS=-L/opt/vc/lib -lGLESv2 -lEGL -lopenmaxil -lbcm_host
-SOURCES=EGLConfig.cpp EGLWindow.cpp main.cpp MyGLWindow.cpp
+SOURCES=EGLConfig.cpp EGLWindow.cpp main.cpp MyGLWindow.cpp shader_utils.cpp
 OBJECTS=$(SOURCES:%.cpp=%.o)
-EXECUTABLE=EGLWindow
+EXECUTABLE=pishadertoy
 
 all: $(SOURCES) $(EXECUTABLE)
 
