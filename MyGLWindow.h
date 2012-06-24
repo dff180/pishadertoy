@@ -27,7 +27,7 @@ class MyGLWindow : public EGLWindow
 		/// @brief ctor
 		/// @param[in] _config an optional configuration for the buffers etc
 		//MyGLWindow(EGLconfig *_config=0);
-		MyGLWindow(EGLconfig *_config, std::string fragmentShader);
+		MyGLWindow(EGLconfig *_config, std::string fragmentShader, std::string textureName="");
 		/// @brief dtor will close down the vc and re-set EGL
 		~MyGLWindow();
 		/// @brief the is the main drawing function should only be called once initalizeGL has
@@ -40,13 +40,15 @@ class MyGLWindow : public EGLWindow
 		float getDeltaTimeS();
 
                 std::string _fragmentShader;
+		std::string _textureName;
 		timeval startTime;
+
+		GLuint _texture0;
 
 		GLuint vbo_quad;
 		GLuint program;
 		GLint attribute_coord2d;
 };
-
 
 
 #endif

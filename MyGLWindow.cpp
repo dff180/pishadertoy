@@ -14,15 +14,18 @@
     You should have received m_a copy of the GNU General Public License
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
-#include "MyGLWindow.h"
 #include <iostream>
 #include <stdio.h>
 
+#include <SOIL/SOIL.h>
 #include "shader_utils.h"
+#include "MyGLWindow.h"
 
-MyGLWindow::MyGLWindow(EGLconfig *_config, std::string fragmentShader) 
+MyGLWindow::MyGLWindow(EGLconfig *_config, std::string fragmentShader, std::string textureName) 
 : EGLWindow(_config)
 , _fragmentShader(fragmentShader)
+, _textureName(textureName)
+, _texture0(0)
 {
 	std::cout<<"My GL Window Ctor\n";
 	// init GL in this case we are going to create some render buffers
@@ -39,7 +42,7 @@ MyGLWindow::~MyGLWindow()
 int MyGLWindow::init_resources()
 {
   GLfloat triangle_vertices[] = {
-    -1.0, -1.0,
+    -0.5, -1.0,
      1.0, -1.0,
     -1.0,  1.0,
      1.0, -1.0,
@@ -95,6 +98,28 @@ void MyGLWindow::initializeGL()
 {
 	init_resources();
 
+	// load texture if specified
+	if (_textureName != "")
+	{
+		_texture0 = SOIL_load_OGL_texture
+			(
+			_textureName.c_str(),
+			SOIL_LOAD_AUTO,
+			SOIL_CREATE_NEW_ID,
+			SOIL_FLAG_MIPMAPS 
+			);
+	
+		/* check for an error during the load process */
+		if( 0 == _texture0 )
+		{
+			printf( "SOIL loading error: '%s' '%s'\n", SOIL_last_result(), _textureName.c_str() );
+		}
+		else
+		{
+			glEnable(GL_TEXTURE_2D);
+		}		
+	}
+
 	// Enable alpha blend
  // 	glEnable(GL_BLEND);
  //   glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
@@ -131,7 +156,7 @@ void MyGLWindow::paintGL()
 // jt
 
   glUseProgram(program);
-  GLuint unif_resolution, unif_time;
+  GLint unif_resolution, unif_time, unif_tex0;
 
   unif_time = glGetUniformLocation(program, "time");
   float deltaTimeS = getDeltaTimeS();
@@ -141,9 +166,19 @@ void MyGLWindow::paintGL()
   unif_resolution = glGetUniformLocation(program, "resolution");
   glUniform2f(unif_resolution, 640.0, 480.0);
 
+  unif_tex0 = glGetUniformLocation(program, "tex0");
+  if (unif_tex0 != -1)
+  {
+    if (_texture0 != 0)
+    {
+      glUniform1i(unif_tex0, 0);
+      glActiveTexture(GL_TEXTURE0);
+      glBindTexture(GL_TEXTURE_2D, _texture0);
+    }
+  }
+
 //printf("%d, %d\n", unif_time, unif_resolution);
 
-  glEnableVertexAttribArray(attribute_coord2d);
   /* Describe our vertices array to OpenGL (it can't guess its format automatically) */
   glBindBuffer(GL_ARRAY_BUFFER, vbo_quad);
   glVertexAttribPointer(
@@ -154,6 +189,7 @@ void MyGLWindow::paintGL()
     0,                 // no extra data between each position
     0                  // offset of first element
   );
+  glEnableVertexAttribArray(attribute_coord2d);
 
   /* Push each element in buffer_vertices to the vertex shader */
   glDrawArrays(GL_TRIANGLES, 0, 6);

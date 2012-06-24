@@ -26,8 +26,13 @@ int main(int argc, char ** argv)
 
 	// Parse command line
 	std::string fragmentShader;
-	if (argc == 2)
+	std::string textureName;
+
+	if (argc >= 2)
 		fragmentShader = argv[1];
+
+	if (argc >= 3)
+		textureName = argv[2];
 
 	std::cout<<"starting GL test\n";
 		bcm_host_init();
@@ -39,7 +44,7 @@ int main(int argc, char ** argv)
 	// set the depth buffer
 	config->setDepth(16);
 	// now create a new window using the default config
-	MyGLWindow win(config, fragmentShader);
+	MyGLWindow win(config, fragmentShader, textureName);
 
 /*
 	// now set the size of the screen in this case I'm going to do a
