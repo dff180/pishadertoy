@@ -42,7 +42,7 @@ MyGLWindow::~MyGLWindow()
 int MyGLWindow::init_resources()
 {
   GLfloat triangle_vertices[] = {
-    -0.5, -1.0,
+    -1.0, -1.0,
      1.0, -1.0,
     -1.0,  1.0,
      1.0, -1.0,
