@@ -25,9 +25,6 @@ void main(void)
     float co = 0.0;
 
 
-    // chrome/angelproject/nvidia/glslES don't seem to like to "break" a loop...
-    // so we have to rewrite it in another way
-/*
     for( int i=0; i<256; i++ )
     {
         z = cc + vec2( z.x*z.x - z.y*z.y, 2.0*z.x*z.y );
@@ -35,7 +32,11 @@ void main(void)
         if( m2>1024.0 ) break;
         co += 1.0;
     }
-*/
+
+/* not working on RPI
+
+    // chrome/angelproject/nvidia/glslES don't seem to like to "break" a loop...
+    // so we have to rewrite it in another way
 
     for( int i=0; i<256; i++ )
     {
@@ -46,7 +47,7 @@ void main(void)
             co += 1.0;
         }
     }
-
+*/
     co = co + 1.0 - log2(.5*log2(m2));
 
     co = sqrt(co/256.0);
