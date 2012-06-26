@@ -24,13 +24,13 @@ class MyGLWindow : public EGLWindow
 
     std::string _fragmentShader;
     std::string _textureName;
-    timeval startTime;
+    timeval     _startTime;
 
-    GLuint _texture0;
+    GLuint      _texture0;
 
-    GLuint vbo_quad;
-    GLuint program;
-    GLint attribute_coord2d;
+    GLuint      _vbo_quad;
+    GLuint      _program;
+    GLint       _attribute_coord2d;
 };
 
 

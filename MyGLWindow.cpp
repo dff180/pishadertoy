@@ -1,4 +1,4 @@
-// By dff180
+// by dff180
 
 #include <iostream>
 #include <stdio.h>
@@ -33,8 +33,8 @@ int MyGLWindow::init_resources()
     -1.0,  1.0
   };
 
-  glGenBuffers(1, &vbo_quad);
-  glBindBuffer(GL_ARRAY_BUFFER, vbo_quad);
+  glGenBuffers(1, &_vbo_quad);
+  glBindBuffer(GL_ARRAY_BUFFER, _vbo_quad);
   glBufferData(GL_ARRAY_BUFFER, sizeof(triangle_vertices), triangle_vertices, GL_STATIC_DRAW);
 
   GLint link_ok = GL_FALSE;
@@ -48,20 +48,20 @@ int MyGLWindow::init_resources()
   else
     if ((fs = create_shader("shaders/triangle.f.glsl", GL_FRAGMENT_SHADER)) == 0) return 0;
 
-  program = glCreateProgram();
-  glAttachShader(program, vs);
-  glAttachShader(program, fs);
-  glLinkProgram(program);
-  glGetProgramiv(program, GL_LINK_STATUS, &link_ok);
+  _program = glCreateProgram();
+  glAttachShader(_program, vs);
+  glAttachShader(_program, fs);
+  glLinkProgram(_program);
+  glGetProgramiv(_program, GL_LINK_STATUS, &link_ok);
   if (!link_ok) {
     fprintf(stderr, "glLinkProgram:");
-    print_log(program);
+    print_log(_program);
     return 0;
   }
 
   const char* attribute_name = "coord2d";
-  attribute_coord2d = glGetAttribLocation(program, attribute_name);
-  if (attribute_coord2d == -1) {
+  _attribute_coord2d = glGetAttribLocation(_program, attribute_name);
+  if (_attribute_coord2d == -1) {
     fprintf(stderr, "Could not bind attribute %s\n", attribute_name);
     return 0;
   }
@@ -105,7 +105,7 @@ void MyGLWindow::initializeGL()
   glClearColor(1,1,1,1);
 
   // Start timer
-  gettimeofday(&startTime, NULL);
+  gettimeofday(&_startTime, NULL);
 }
 
 float MyGLWindow::getDeltaTimeS()
@@ -113,8 +113,8 @@ float MyGLWindow::getDeltaTimeS()
   timeval currentTime;
   gettimeofday(&currentTime, NULL);
 
-  float deltaTime = (currentTime.tv_sec - startTime.tv_sec); 
-  deltaTime += (currentTime.tv_usec - startTime.tv_usec) / 1000000.0; // us to s
+  float deltaTime = (currentTime.tv_sec - _startTime.tv_sec); 
+  deltaTime += (currentTime.tv_usec - _startTime.tv_usec) / 1000000.0; // us to s
   return deltaTime;
 }
 
@@ -132,17 +132,17 @@ void MyGLWindow::paintGL()
   glClear( GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
   // setup fragment shader variables
-  glUseProgram(program);
+  glUseProgram(_program);
   GLint unif_resolution, unif_time, unif_tex0;
 
-  unif_time = glGetUniformLocation(program, "time");
+  unif_time = glGetUniformLocation(_program, "time");
   float deltaTimeS = getDeltaTimeS();
   glUniform1f(unif_time, deltaTimeS);  
   
-  unif_resolution = glGetUniformLocation(program, "resolution");
+  unif_resolution = glGetUniformLocation(_program, "resolution");
   glUniform2f(unif_resolution, getMaxWidth(), getMaxHeight());
 
-  unif_tex0 = glGetUniformLocation(program, "tex0");
+  unif_tex0 = glGetUniformLocation(_program, "tex0");
   if (unif_tex0 != -1)
   {
     if (_texture0 != 0)
@@ -154,21 +154,21 @@ void MyGLWindow::paintGL()
   }
 
   /* Describe our vertices array to OpenGL */
-  glBindBuffer(GL_ARRAY_BUFFER, vbo_quad);
+  glBindBuffer(GL_ARRAY_BUFFER, _vbo_quad);
   glVertexAttribPointer(
-    attribute_coord2d, // attribute
+    _attribute_coord2d, // attribute
     2,                 // number of elements per vertex, here (x,y)
     GL_FLOAT,          // the type of each element
     GL_FALSE,          // take our values as-is
     0,                 // no extra data between each position
     0                  // offset of first element
   );
-  glEnableVertexAttribArray(attribute_coord2d);
+  glEnableVertexAttribArray(_attribute_coord2d);
 
   /* Push each element in buffer_vertices to the vertex shader */
   glDrawArrays(GL_TRIANGLES, 0, 6);
 
-  glDisableVertexAttribArray(attribute_coord2d);
+  glDisableVertexAttribArray(_attribute_coord2d);
 
   // Swap back buffer to front
   swapBuffers();
