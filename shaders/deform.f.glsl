@@ -1,3 +1,4 @@
+// by iq (2009)
 #ifdef GL_ES
 precision highp float;
 #endif
