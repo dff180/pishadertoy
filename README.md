@@ -25,6 +25,8 @@ Running
 -------
 * Start from Raspberry PI console
 
+* Exit program with CTRL-C
+
 * Using default fragment shader
 
     `./pishadertoy`
@@ -35,5 +37,5 @@ Running
     
 * Using fragment shader with texture
 
-    `./pishadertoy shaders/deform.f.glsl tex/tex1.jpg`
+    `./pishadertoy shaders/deform.f.glsl textures/tex1.jpg`
     
