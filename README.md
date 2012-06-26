@@ -25,7 +25,7 @@ They assume that you already have set up a working development environment where
 
 Running
 -------
-* Start from Raspberry PI console
+* Start from Raspberry Pi terminal
 
 * Exit program with CTRL-C
 
