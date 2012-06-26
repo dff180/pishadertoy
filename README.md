@@ -8,7 +8,9 @@ Fragment shader and texture can be specified on command-line.
 Credits
 -------
 
-Included sample shaders are from [ShaderToy](http://www.iquilezles.org/apps/shadertoy/)
+* EGL class code by [Jon Macey](http://jonmacey.blogspot.de/2012/06/opengl-es-on-raspberry-pi-pt-3-creating.html)
+
+* Sample shaders from [ShaderToy](http://www.iquilezles.org/apps/shadertoy/)
 
 
 Installation
