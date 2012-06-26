@@ -21,7 +21,8 @@ They assume that you already have set up a working development environment where
 
 1. Get sources with `git clone https://github.com/dff180/pishadertoy.git`
 2. Install dependencies `sudo apt-get install libsoil-dev`
-3. make
+3. `cd pishadertoy`
+4. `make`
 
 Running
 -------
