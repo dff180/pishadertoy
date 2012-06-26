@@ -3,6 +3,7 @@ pishadertoy
 by dff180
 
 Simple tool to test OpenGL ES 2.0 fragment shaders on the Raspberry Pi.
+
 Fragment shader and texture can be specified on command-line.
 
 Credits
@@ -10,7 +11,7 @@ Credits
 
 * EGL class code by [Jon Macey](http://jonmacey.blogspot.de/2012/06/opengl-es-on-raspberry-pi-pt-3-creating.html)
 
-* Sample shaders from [ShaderToy](http://www.iquilezles.org/apps/shadertoy/)
+* Sample shaders and textures from [ShaderToy](http://www.iquilezles.org/apps/shadertoy/)
 
 
 Installation
@@ -19,8 +20,7 @@ Note: The following instructions are for [Raspbian](http://www.raspbian.org/) Ra
 They assume that you already have set up a working development environment where you can compile the hello\_pi examples.
 
 1. Get sources with `git clone https://github.com/dff180/pishadertoy.git`
-2. Install dependencies
-2.1 `sudo apt-get install libsoil-dev`
+2. Install dependencies `sudo apt-get install libsoil-dev`
 3. make
 
 Running
@@ -39,5 +39,5 @@ Running
     
 * Using fragment shader with texture
 
-    `./pishadertoy shaders/deform.f.glsl textures/tex1.jpg`
+    `./pishadertoy shaders/deform.f.glsl textures/tex3.jpg`
     
