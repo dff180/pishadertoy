@@ -16,7 +16,7 @@ Credits
 
 Installation
 ------------
-Note: The following instructions are for [Raspbian](http://www.raspbian.org/) Raspberry Pi installs (Debian Wheezy).
+Note: The following instructions are for [Raspbian](http://www.raspbian.org/) Raspberry Pi installs (Pisces R1 image, Debian Wheezy).
 They assume that you already have set up a working development environment where you can compile the hello\_pi examples.
 
 1. Get sources with `git clone https://github.com/dff180/pishadertoy.git`
@@ -30,15 +30,17 @@ Running
 
 * Exit program with CTRL-C
 
+### Examples
+
 * Using default fragment shader
 
     `./pishadertoy`
     
-* Using fragment shader who doesn't need texture
+* Using fragment shader which doesn't need texture
 
     `./pishadertoy shaders/plasma.f.glsl`
     
 * Using fragment shader with texture
 
-    `./pishadertoy shaders/deform.f.glsl textures/tex3.jpg`
+    `./pishadertoy shaders/deform.f.glsl textures/mytexture.jpg`
     
