@@ -13,6 +13,7 @@ Credits
 
 * Sample shaders from [ShaderToy](http://www.iquilezles.org/apps/shadertoy/) by Inigo 'iq' Quilez. Explore the ShaderToy website for additional shader and texture usage examples.
 
+* Sample textures from http://elout.home.xs4all.nl/texl/tex/index.html
 
 Installation
 ------------
