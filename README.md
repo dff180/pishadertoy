@@ -11,7 +11,7 @@ Credits
 
 * EGL class code by [Jon Macey](http://jonmacey.blogspot.de/2012/06/opengl-es-on-raspberry-pi-pt-3-creating.html)
 
-* Sample shaders and textures from [ShaderToy](http://www.iquilezles.org/apps/shadertoy/)
+* Sample shaders and from [ShaderToy](http://www.iquilezles.org/apps/shadertoy/). Explore the ShaderToy website for additional shader and texture usage examples.
 
 
 Installation
