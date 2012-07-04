@@ -11,7 +11,7 @@ Credits
 
 * EGL class code by [Jon Macey](http://jonmacey.blogspot.de/2012/06/opengl-es-on-raspberry-pi-pt-3-creating.html)
 
-* Sample shaders and from [ShaderToy](http://www.iquilezles.org/apps/shadertoy/). Explore the ShaderToy website for additional shader and texture usage examples.
+* Sample shaders from [ShaderToy](http://www.iquilezles.org/apps/shadertoy/) by Inigo 'iq' Quilez. Explore the ShaderToy website for additional shader and texture usage examples.
 
 
 Installation
@@ -26,6 +26,9 @@ They assume that you already have set up a working development environment where
 
 Running
 -------
+* Make sure to use latest firmware and 192/64 memory split
+  * `sudo rpi-update 192`
+
 * Start from Raspberry Pi console or via SSH client 
 
 * Exit program with CTRL-C
