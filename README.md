@@ -2,9 +2,9 @@ pishadertoy
 ===========
 by dff180
 
-Simple tool to test OpenGL ES 2.0 fragment shaders on the Raspberry Pi.
+Simple console tool to test OpenGL ES 2.0 fragment shaders on the Raspberry Pi.
 
-Fragment shader and texture can be specified on command-line.
+Fragment shader and optional texture are specified on command-line.
 
 Credits
 -------
@@ -46,5 +46,5 @@ Running
     
 * Using fragment shader with texture
 
-    `./pishadertoy shaders/deform.f.glsl textures/mytexture.jpg`
+    `./pishadertoy shaders/relieftunnel.f.glsl textures/texl2.jpg`
     
