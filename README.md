@@ -42,7 +42,7 @@ Running
     
 * Using fragment shader which doesn't need texture
 
-    `./pishadertoy shaders/plasma.f.glsl`
+    `./pishadertoy shaders/flower.f.glsl`
     
 * Using fragment shader with texture
 
