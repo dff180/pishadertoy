@@ -17,7 +17,7 @@ Credits
 
 Installation
 ------------
-Note: The following instructions are for [Raspbian](http://www.raspbian.org/) Raspberry Pi installs (Pisces R1 image, Debian Wheezy).
+Note: The following instructions are for [Raspbian](http://www.raspbian.org/) Raspberry Pi installs (2012-07-15-wheezy-raspbian or Pisces images).
 They assume that you already have set up a working development environment where you can compile the hello\_pi examples.
 
 1. Get sources with `git clone https://github.com/dff180/pishadertoy.git`
