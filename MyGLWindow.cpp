@@ -2,6 +2,7 @@
 
 #include <iostream>
 #include <stdio.h>
+#include <stdlib.h>
 
 #include <SOIL/SOIL.h>
 #include "shader_utils.h"
