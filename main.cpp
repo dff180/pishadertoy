@@ -2,6 +2,7 @@
 
 #include <iostream>
 #include <string>
+#include <stdlib.h>
 #include "MyGLWindow.h"
 #include "bcm_host.h"
 
