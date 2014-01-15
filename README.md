@@ -6,6 +6,8 @@ Simple console tool to test OpenGL ES 2.0 fragment shaders on the Raspberry Pi.
 
 Fragment shader and optional texture are specified on command-line.
 
+Sample video: https://www.youtube.com/watch?v=F0mfntGDmxg
+
 Credits
 -------
 
